@@ -47,7 +47,7 @@ function prepareForModding(discovery, id) {
     () => Promise.resolve());
 
     // Check addons folder (Retail)
-    if (id === WOW_RETAIL) return fs.ensureDirWritableAsync(path.join(discovery.path, 'retail', 'Interface', 'AddOns'),
+    if (id === WOW_RETAIL) return fs.ensureDirWritableAsync(path.join(discovery.path, '_retail_', 'Interface', 'AddOns'),
     () => Promise.resolve());
 
     // Somehow it's neither game.
@@ -117,7 +117,7 @@ function main(context) {
         mergeMods: true,
         requiresCleanup: true,
         queryPath: findGame(WOW_RETAIL),
-        queryModPath: () => path.join('retail','Interface', 'AddOns'),
+        queryModPath: () => path.join('_retail_','Interface', 'AddOns'),
         logo: 'gameart.jpg',
         executable: () => path.join('retail','wow.exe'),
         setup: (discovery) => prepareForModding(discovery, WOW_CLASSIC),
@@ -137,7 +137,7 @@ function main(context) {
         queryPath: findGame(WOW_CLASSIC),
         queryModPath: () => path.join('_classic_','Interface', 'AddOns'),
         logo: 'gameart-classic.jpg',
-        executable: () => path.join('_classic_','wow.exe'),
+        executable: () => path.join('_classic_','WowClassic.exe'),
         setup: (discovery) => prepareForModding(discovery, WOW_CLASSIC),
         supportedTools: [],
         requiredFiles: [

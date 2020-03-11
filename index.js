@@ -59,7 +59,7 @@ function testWoWAddon(files, gameId) {
     const supported = ((gameId === WOW_CLASSIC) || (gameId === WOW_RETAIL)) && !!files.find(file => path.extname(file) === MOD_FILE_EXT);
 
     // Tell Vortex if this mod meets the criteria. 
-    Promise.resolve({
+    return Promise.resolve({
         supported,
         requiredFiles: []
     })
@@ -67,7 +67,7 @@ function testWoWAddon(files, gameId) {
 
 async function installWowAddon(files) {
     // See how many addons are in this archive.
-    const tocFiles = files.filter(file => path.basename(file) === MOD_FILE_EXT);
+    const tocFiles = files.filter(file => path.extname(file) === MOD_FILE_EXT);
     log('debug', `Found ${tocFiles.length} World of Warcraft addons`);
     
     // Map out each addons and it's included files.
@@ -89,14 +89,11 @@ async function installWowAddon(files) {
 
     // Build instructions for Vortex to install these properly. 
     return Promise.map(addOns, addOn => {
-        const addOnName = path.basename(addOn.toc, MOD_FILE_EXT);
-
         return addOn.addonFiles.map(file => {
-            const destination = path.join(addOnName, file.substr(addonIndex));
             return {
                 type: "copy",
                 source: file,
-                destination: destination
+                destination: file.substr(file.addonIndex)
             };
         });
     })
@@ -154,7 +151,7 @@ function main(context) {
     */
 
     // This installer currently generates an error and I'm not sure why, so it's commented out. 
-    // context.registerInstaller('worldofwarcraft-addon', 25, testWoWAddon, installWowAddon);
+    context.registerInstaller('worldofwarcraft-addon', 25, testWoWAddon, installWowAddon);
 
 
     // Allows users to open CurseForge inside Vortex. 

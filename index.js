@@ -111,6 +111,7 @@ function main(context) {
     context.registerGame({
         id: WOW_RETAIL,
         name: 'World of Warcraft',
+        shortName: 'WoW',
         mergeMods: true,
         requiresCleanup: true,
         queryPath: findGame(WOW_RETAIL),
@@ -129,6 +130,7 @@ function main(context) {
     context.registerGame({
         id: WOW_CLASSIC,
         name: 'World of Warcraft Classic',
+        shortName: 'WoW Classic',
         mergeMods: true,
         requiresCleanup: true,
         queryPath: findGame(WOW_CLASSIC),

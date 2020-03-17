@@ -140,7 +140,7 @@ function main(context) {
         setup: (discovery) => prepareForModding(discovery, WOW_CLASSIC),
         supportedTools: [],
         requiredFiles: [
-            path.join('_classic_','wow.exe')
+            path.join('_classic_','WowClassic.exe')
         ],
         details: {
             nexusPageId: WOW_RETAIL

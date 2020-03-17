@@ -142,7 +142,9 @@ function main(context) {
         requiredFiles: [
             path.join('_classic_','wow.exe')
         ],
-        details: {}
+        details: {
+            nexusPageId: WOW_RETAIL
+        }
     });
 
     /* 

@@ -118,7 +118,7 @@ function main(context) {
         queryModPath: () => path.join('_retail_','Interface', 'AddOns'),
         logo: 'gameart.jpg',
         executable: () => path.join('_retail_','wow.exe'),
-        setup: (discovery) => prepareForModding(discovery, WOW_CLASSIC),
+        setup: (discovery) => prepareForModding(discovery, WOW_RETAIL),
         supportedTools: [],
         requiredFiles: [
             path.join('_retail_','wow.exe')
